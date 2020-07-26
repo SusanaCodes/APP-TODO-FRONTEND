@@ -17,7 +17,9 @@ function Task(props) {
       </div>
 
       <div className="col-6 col-md -2 ">
-        <button className="btn btn-primary">Mark as completed</button>
+        {props.completed === false && (
+          <button className="btn btn-primary">Mark as completed</button>
+        )}
       </div>
 
       <div className="col-6 col-md -2 ">
