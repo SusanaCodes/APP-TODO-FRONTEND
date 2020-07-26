@@ -1,4 +1,6 @@
 import React from "react";
+import moment from "moment";
+import "./Task.css";
 
 function Task(props) {
   return (
@@ -9,7 +11,10 @@ function Task(props) {
         {props.urgent === true ? "URGENT" : ""}
       </div>
 
-      <div className="col-6 col-md -2 "> {props.dueDate}</div>
+      <div className="col-6 col-md -2 ">
+        {" "}
+        {moment("2020-08-01").format("ddd Do MMM YYYY")}
+      </div>
 
       <div className="col-6 col-md -2 ">
         <button className="btn btn-primary">Mark as completed</button>
