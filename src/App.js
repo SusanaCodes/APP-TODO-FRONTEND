@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Header/Header";
 import TaskCount from "./TaskCount";
 import Task from "./Task/Task";
+import AddNewTask from "./NewTask/AddNewTask.js";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -46,6 +47,8 @@ function App() {
         <TaskCount count={tasks.length} />
 
         <div className="container">
+          <AddNewTask />
+
           {tasks.map(function (tasks) {
             return (
               <Task
