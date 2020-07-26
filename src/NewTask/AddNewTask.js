@@ -17,8 +17,8 @@ function AddNewTask() {
           className="form-check_input"
           id="exampleCheck1"
         />
-        <label className="form-check-label" htmlfor="urgentCheck">
-          Ugent
+        <label className="form-check-label" htmlFor="urgentCheck">
+          Urgent
         </label>
       </div>
       <div className="col-2">

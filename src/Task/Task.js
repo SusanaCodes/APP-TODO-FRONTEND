@@ -2,7 +2,12 @@ import React from "react";
 import moment from "moment";
 import "./Task.css";
 
-function Task(props) {
+const Task = (props) => {
+  const handleClick = () => {
+    console.log("Delete button was clicked");
+    props.deleteTaskFunc(props.id);
+  };
+
   return (
     <div className="row">
       <div className="col 12 col- md-4"> {props.text}</div>
@@ -23,10 +28,12 @@ function Task(props) {
       </div>
 
       <div className="col-6 col-md -2 ">
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={handleClick}>
+          Delete
+        </button>
       </div>
     </div>
   );
-}
+};
 
 export default Task;
