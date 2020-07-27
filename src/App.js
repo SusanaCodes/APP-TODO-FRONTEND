@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./Header/Header";
 import TaskCount from "./TaskCount";
 import Task from "./Task/Task";
-import AddNewTask from "./NewTask/AddNewTask.js";
+import AddNewTask from "./NewTask/AddNewTask";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -61,6 +61,18 @@ function App() {
     setTasks(newTasks);
   };
 
+  const addNewTask = (text, date, urgent) => {
+    const newTask = {
+      text: text,
+      date: date,
+      urgent: urgent,
+      completed: false,
+      id: Math.random() * 1000,
+    };
+    const newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -69,7 +81,7 @@ function App() {
         <TaskCount count={tasks.length} />
 
         <div className="container">
-          <AddNewTask />
+          <AddNewTask addNewTaskFunc={addNewTask} />
 
           {tasks.map(function (tasks) {
             return (
