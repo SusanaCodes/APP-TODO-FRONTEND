@@ -3,9 +3,12 @@ import moment from "moment";
 import "./Task.css";
 
 const Task = (props) => {
-  const handleClick = () => {
-    console.log("Delete button was clicked");
+  const handleDeleteClick = () => {
     props.deleteTaskFunc(props.id);
+  };
+
+  const handleCompleteClick = () => {
+    props.markCompleteFunc(props.id);
   };
 
   return (
@@ -18,17 +21,19 @@ const Task = (props) => {
 
       <div className="col-6 col-md -2 ">
         {" "}
-        {moment("2020-08-01").format("ddd Do MMM YYYY")}
+        {moment(props.dueDate).format("ddd Do MMM YYYY")}
       </div>
 
       <div className="col-6 col-md -2 ">
         {props.completed === false && (
-          <button className="btn btn-primary">Mark as completed</button>
+          <button className="btn btn-primary" onClick={handleCompleteClick}>
+            Mark as completed
+          </button>
         )}
       </div>
 
       <div className="col-6 col-md -2 ">
-        <button className="btn btn-danger" onClick={handleClick}>
+        <button className="btn btn-danger" onClick={handleDeleteClick}>
           Delete
         </button>
       </div>

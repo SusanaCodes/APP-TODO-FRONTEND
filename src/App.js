@@ -46,13 +46,19 @@ function App() {
 
   const deleteTask = (id) => {
     const filteredTasks = tasks.filter((task) => {
-      if (task.id === id) {
-        return false;
-      } else {
-        return true;
-      }
+      return task.id !== id;
     });
     setTasks(filteredTasks);
+  };
+
+  const markTaskComplete = (id) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.completed = true;
+      }
+      return task;
+    });
+    setTasks(newTasks);
   };
 
   return (
@@ -70,6 +76,7 @@ function App() {
               <Task
                 key={tasks.id}
                 deleteTaskFunc={deleteTask}
+                markCompleteFunc={markTaskComplete}
                 text={tasks.text}
                 urgent={tasks.urgent}
                 completed={tasks.completed}
