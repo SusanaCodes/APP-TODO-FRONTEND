@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 import Header from "./Header/Header";
 import TaskCount from "./TaskCount";
@@ -6,71 +7,77 @@ import Task from "./Task/Task";
 import AddNewTask from "./NewTask/AddNewTask";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      text: "Do your app",
-      completed: false,
-      dueDate: "2020-26-7",
-      urgent: true,
-      id: 1,
-    },
-    {
-      text: "Finish FM course",
-      completed: true,
-      dueDate: "2020-01-8",
-      urgent: false,
-      id: 2,
-    },
-    {
-      text: "Do github course",
-      completed: false,
-      dueDate: "2020-05-08",
-      urgent: false,
-      id: 3,
-    },
-    {
-      text: "Review notes from TR",
-      completed: false,
-      dueDate: "2020-26-7",
-      urgent: true,
-      id: 4,
-    },
-    {
-      text: "Doctor appointment",
-      completed: false,
-      dueDate: "2020-27-7",
-      urgent: true,
-      id: 5,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://y1c8m3wrt8.execute-api.eu-west-1.amazonaws.com/dev/tasks")
+      .then((response) => {
+        console.log("Success", response.data);
+        setTasks(response.data);
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      });
+  }, []);
 
   const deleteTask = (id) => {
-    const filteredTasks = tasks.filter((task) => {
-      return task.id !== id;
-    });
-    setTasks(filteredTasks);
+    axios
+      .delete(
+        `https://y1c8m3wrt8.execute-api.eu-west-1.amazonaws.com/dev/tasks/${id}`
+      )
+      .then((response) => {
+        const filteredTasks = tasks.filter((task) => {
+          return task.TaskId !== id;
+        });
+        setTasks(filteredTasks);
+      })
+      .catch((err) => {
+        console.log("Api error", err);
+      });
   };
 
   const markTaskComplete = (id) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.completed = true;
-      }
-      return task;
-    });
-    setTasks(newTasks);
+    axios
+      .put(
+        `https://y1c8m3wrt8.execute-api.eu-west-1.amazonaws.com/dev/tasks/${id}`,
+        { Completed: true }
+      )
+      .then((response) => {
+        console.log("updated", response);
+
+        const newTasks = tasks.map((task) => {
+          if (task.TaskId === id) {
+            task.Completed = 1;
+          }
+          return task;
+        });
+        setTasks(newTasks);
+      })
+      .catch((err) => {
+        console.log("Error updating Task", err);
+      });
   };
 
   const addNewTask = (text, date, urgent) => {
-    const newTask = {
-      text: text,
-      date: date,
-      urgent: urgent,
-      completed: false,
-      id: Math.random() * 1000,
-    };
-    const newTasks = [...tasks, newTask];
-    setTasks(newTasks);
+    axios
+      .post(
+        "https://y1c8m3wrt8.execute-api.eu-west-1.amazonaws.com/dev/tasks",
+        {
+          Description: text,
+          DueDate: date,
+          Urgent: urgent,
+        }
+      )
+      .then((response) => {
+        const newTask = response.data;
+        console.log("saved", response);
+        const newTasks = [...tasks, newTask];
+        setTasks(newTasks);
+      })
+      .catch((err) => {
+        console.log("Error creating task", err);
+      });
   };
 
   return (
@@ -86,14 +93,14 @@ function App() {
           {tasks.map(function (tasks) {
             return (
               <Task
-                key={tasks.id}
+                key={tasks.TaskId}
                 deleteTaskFunc={deleteTask}
                 markCompleteFunc={markTaskComplete}
-                text={tasks.text}
-                urgent={tasks.urgent}
-                completed={tasks.completed}
-                dueDate={tasks.dueDate}
-                id={tasks.id}
+                text={tasks.Description}
+                urgent={tasks.Urgent}
+                completed={tasks.Completed}
+                dueDate={tasks.DueDate}
+                id={tasks.TaskId}
               />
             );
           })}
