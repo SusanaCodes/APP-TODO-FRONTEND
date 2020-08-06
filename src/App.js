@@ -81,35 +81,34 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
+    <div className="container-app">
+      <div className="App">
+        <Header />
 
-      <main>
-        <TaskCount count={tasks.length} />
+        <main>
+          <TaskCount count={tasks.length} />
 
-        <div className="container">
-          {/* <AddNewTask addNewTaskFunc={addNewTask} /> */}
-
-          {tasks.map(function (tasks) {
-            return (
-              <Task
-                key={tasks.TaskId}
-                deleteTaskFunc={deleteTask}
-                markCompleteFunc={markTaskComplete}
-                text={tasks.Description}
-                urgent={tasks.Urgent}
-                completed={tasks.Completed}
-                dueDate={tasks.DueDate}
-                id={tasks.TaskId}
-              />
-            );
-          })}
-        </div>
-
-        <div className="addingTask">
-          <AddNewTask addNewTaskFunc={addNewTask} />
-        </div>
-      </main>
+          <div className="container">
+            {tasks.map(function (tasks) {
+              return (
+                <Task
+                  key={tasks.TaskId}
+                  deleteTaskFunc={deleteTask}
+                  markCompleteFunc={markTaskComplete}
+                  text={tasks.Description}
+                  urgent={tasks.Urgent}
+                  completed={tasks.Completed}
+                  dueDate={tasks.DueDate}
+                  id={tasks.TaskId}
+                />
+              );
+            })}
+          </div>
+          <div className="addingTask">
+            <AddNewTask addNewTaskFunc={addNewTask} />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

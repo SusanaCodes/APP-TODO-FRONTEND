@@ -26,8 +26,8 @@ const Task = (props) => {
 
       <div className="col-6 col-md -2 ">
         {props.completed === 0 && (
-          <button className="btn btn-primary" onClick={handleCompleteClick}>
-            Mark as completed
+          <button className="btn btn-success" onClick={handleCompleteClick}>
+            Done
           </button>
         )}
       </div>
