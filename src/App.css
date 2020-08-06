@@ -1,15 +1,17 @@
 .App {
-  background: #fffcfcea;
+  background: rgba(255, 255, 255, 0.979);
   text-align: center;
   background-image: url(Images/many-clocks.jpg);
   background-blend-mode: luminosity;
   background-size: cover;
+  color: rgba(80, 52, 50, 0.938);
+  font-weight: bolder;
 }
 
 .container {
   padding-top: 4em;
   padding-bottom: 6em;
-  background-color: rgba(202, 199, 199, 0.925);
+  background-color: rgba(231, 228, 228, 0.925);
 }
 
 .container-new {
@@ -20,7 +22,7 @@
   padding-left: 25em;
   padding-right: 26em;
   /* position: relative; */
-  background: #f5f5f5b7;
+  /* background: #f5f5f5b7; */
 }
 
 Header {
@@ -33,4 +35,18 @@ Taskcount {
 
 .card {
   background-color: rgba(231, 230, 230, 0.925);
+}
+
+.btn-outline-success {
+  background-color: #aedaaed2;
+  color: #fff;
+  border-color: rgba(80, 52, 50, 0.932);
+}
+
+.btn-danger {
+  background-color: rgba(255, 0, 0, 0.212);
+}
+.btn-primary {
+  background-color: rgba(80, 52, 50, 0.616);
+  border-color: white;
 }

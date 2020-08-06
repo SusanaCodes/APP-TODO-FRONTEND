@@ -104,16 +104,22 @@ function App() {
               );
             })}
           </div>
-          <div className="card">
-            {/* <div class="card-header"></div> */}
-            <div class="card-body">
-              <p class="card-text">
+          {/* <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <p class="lead">
                 <AddNewTask addNewTaskFunc={addNewTask} />
               </p>
             </div>
-          </div>
-          {/* <AddNewTask addNewTaskFunc={addNewTask} />
           </div> */}
+          <div className="card">
+            <div class="fixed-bottom">
+              <div class="card-body">
+                <p class="card-text">
+                  <AddNewTask addNewTaskFunc={addNewTask} />
+                </p>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>
