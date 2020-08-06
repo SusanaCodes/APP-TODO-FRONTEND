@@ -104,9 +104,16 @@ function App() {
               );
             })}
           </div>
-          <div className="addingTask">
-            <AddNewTask addNewTaskFunc={addNewTask} />
+          <div className="card">
+            {/* <div class="card-header"></div> */}
+            <div class="card-body">
+              <p class="card-text">
+                <AddNewTask addNewTaskFunc={addNewTask} />
+              </p>
+            </div>
           </div>
+          {/* <AddNewTask addNewTaskFunc={addNewTask} />
+          </div> */}
         </main>
       </div>
     </div>
