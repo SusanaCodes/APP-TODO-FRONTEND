@@ -5,8 +5,22 @@ header {
 
 h1 {
   text-decoration: underline;
+  color: rgba(80, 52, 50, 0.932);
 }
 
-h5 {
-  font-style: oblique;
+p {
+  color: rgba(80, 52, 50, 0.932);
+  font-style: initial;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: light;
+}
+.currentTime {
+  font-weight: bolder;
+  font-style: normal;
+  background-color: rgba(80, 52, 50, 0.616);
+  color: black;
+}
+.card-body {
+  background-size: color;
 }
