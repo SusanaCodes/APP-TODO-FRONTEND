@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function AddNewTask(props) {
   const [taskText, setTaskText] = useState("");
-  const [date, setDate] = useState("2020-08-01");
+  const [date, setDate] = useState("2020-09-01");
   const [urgent, setUrgent] = useState(false);
 
   const handleTextChange = (event) => {
@@ -24,7 +24,7 @@ function AddNewTask(props) {
 
   return (
     <div className="row mb-3">
-      <div className="col-4">
+      <div className="col-5">
         <input
           type="text"
           className="form-control"
@@ -33,7 +33,7 @@ function AddNewTask(props) {
         />
       </div>
 
-      <div className="col-4">
+      <div className="col-3">
         <input
           type="date"
           className="form-control"

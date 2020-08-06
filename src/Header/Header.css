@@ -1,3 +1,13 @@
+header {
+  padding-top: 2em;
+  padding-bottom: 1em;
+  background-image: image(wood-1.jpg);
+}
+
 h1 {
   text-decoration: underline;
+}
+
+h5 {
+  font-style: oblique;
 }

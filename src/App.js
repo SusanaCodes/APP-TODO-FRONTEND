@@ -88,7 +88,7 @@ function App() {
         <TaskCount count={tasks.length} />
 
         <div className="container">
-          <AddNewTask addNewTaskFunc={addNewTask} />
+          {/* <AddNewTask addNewTaskFunc={addNewTask} /> */}
 
           {tasks.map(function (tasks) {
             return (
@@ -104,6 +104,10 @@ function App() {
               />
             );
           })}
+        </div>
+
+        <div className="addingTask">
+          <AddNewTask addNewTaskFunc={addNewTask} />
         </div>
       </main>
     </div>
